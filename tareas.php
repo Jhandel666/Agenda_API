@@ -1,15 +1,12 @@
 <?php
 
-header("Content-Type: application/json");
+$host = $_ENV['MYSQLHOST'];
+$user = $_ENV['MYSQLUSER'];
+$password = $_ENV['MYSQLPASSWORD'];
+$database = $_ENV['MYSQLDATABASE'];
+$port = $_ENV['MYSQLPORT'];
 
-// Datos de Railway (copia los de la sección Variables)
-$host = "mysql.railway.internal";
-$user = "root";
-$password = "GNRRzKPKEnjTIWdrZeEjyIOzcLvtdIPl";
-$database = "railway";
-$port = "3306";
-
-$conn = new mysqli($host, $user, $password, $database, $port);
+$conn = new mysqli($host,$user,$password,$database,$port);
 
 if ($conn->connect_error) {
     die(json_encode(["error"=>"Error de conexión a la base de datos"]));
