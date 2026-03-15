@@ -46,9 +46,9 @@ $sql = "INSERT INTO tareas(materia,tarea,descripcion,fecha_creacion)
 VALUES('$materia','$tarea','$descripcion','$fecha')";
 
 if($conn->query($sql)){
-    echo json_encode(["mensaje"=>"Tarea guardada correctamente"]);
+    echo json_encode(["mensaje"=>"Tarea guardada"]);
 }else{
-    echo json_encode(["error"=>"No se pudo guardar"]);
+    echo json_encode(["error"=>$conn->error]);
 }
 
 break;
