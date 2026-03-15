@@ -39,8 +39,8 @@ $materia = $data['materia'];
 $tarea = $data['tarea'];
 $descripcion = $data['descripcion'];
 
-$sql = "INSERT INTO tareas(materia,tarea,descripcion)
-VALUES('$materia','$tarea','$descripcion')";
+$sql = "INSERT INTO tareas(materia,tarea,descripcion,fecha_creacion)
+VALUES('$materia','$tarea','$descripcion', NOW())";
 
 if($conn->query($sql)){
     echo json_encode(["mensaje"=>"Tarea guardada correctamente"]);
