@@ -1,5 +1,7 @@
 <?php
 
+header("Content-Type: application/json");
+
 $host = $_ENV['MYSQLHOST'];
 $user = $_ENV['MYSQLUSER'];
 $password = $_ENV['MYSQLPASSWORD'];
@@ -18,7 +20,7 @@ switch($method){
 
 case 'GET':
 
-$result = $conn->query("SELECT * FROM tareas");
+$result = $conn->query("SELECT * FROM tareas ORDER BY id DESC");
 
 $tareas = array();
 
@@ -38,9 +40,10 @@ $data = json_decode(file_get_contents("php://input"), true);
 $materia = $data['materia'];
 $tarea = $data['tarea'];
 $descripcion = $data['descripcion'];
+$fecha = $data['fecha'];
 
 $sql = "INSERT INTO tareas(materia,tarea,descripcion,fecha_creacion)
-VALUES('$materia','$tarea','$descripcion', NOW())";
+VALUES('$materia','$tarea','$descripcion','$fecha')";
 
 if($conn->query($sql)){
     echo json_encode(["mensaje"=>"Tarea guardada correctamente"]);
