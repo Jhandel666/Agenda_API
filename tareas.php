@@ -42,8 +42,11 @@ $tarea = $data['tarea'];
 $descripcion = $data['descripcion'];
 $fecha = $data['fecha'];
 
+/* convertir fecha al formato correcto para MySQL */
+$fecha_mysql = date("Y-m-d", strtotime($fecha));
+
 $sql = "INSERT INTO tareas(materia,tarea,descripcion,fecha_creacion)
-VALUES('$materia','$tarea','$descripcion','$fecha')";
+VALUES('$materia','$tarea','$descripcion','$fecha_mysql')";
 
 if($conn->query($sql)){
     echo json_encode(["mensaje"=>"Tarea guardada"]);
