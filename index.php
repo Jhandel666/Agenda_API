@@ -1,3 +1,3 @@
 <?php
-require 'tareas.php';
+include 'tareas.php';
 ?>
